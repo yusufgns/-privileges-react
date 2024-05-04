@@ -1,13 +1,3 @@
-# Privileges
-
-Allows you to control the components on the page by privileges in a simple way.
-
-## Custom privileges component
-
-By creating a custom privileges component, you can ensure faster and cleaner development
-
-```ts
-//custom-privileges.tsx
 import { PrivilegesContainer } from "./container";
 
 export type Privilege = {
@@ -34,19 +24,8 @@ export const CustomPrivilegesComponent = ({ children, userPrivileges, componentP
             button_container={<button>Test</button>}
             not_privileges_container={<div>Not enough privileges</div>}
             tooltip_container={<div>Tooltip</div>}
-            tooltip_text="You don't have permission to view this tooltip."
         >
             {children}
         </PrivilegesContainer>
     )
 }
-
-//index.tsx
-<CustomPrivilegesComponent
-  userPrivileges={[PRIVILEGES.PAID]}
-  componentPrivileges={[PRIVILEGES.PAID]}
-  active="button"
->
-  TEST PRIVILEGES
-</CustomPrivilegesComponent>
-```

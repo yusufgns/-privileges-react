@@ -8,6 +8,6 @@ export const PRIVILEGES = Object.freeze({
 });
 
 export const moderator: Readonly<Privilege> = Object.freeze({
-    FREE: 'free',
+    ADMIN: 'admin',
 });
 
