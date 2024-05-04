@@ -1,3 +1,5 @@
+import { Privilege } from '../types/privileges';
+
 export const PRIVILEGES = Object.freeze({
     ADMIN: 'admin',
     FREE: 'free',
@@ -5,6 +7,7 @@ export const PRIVILEGES = Object.freeze({
     USER: 'user'
 });
 
-export const UNLIMITED_PRIVILEGES = Object.freeze({
-    ADMIN: 'admin',
-})
+export const moderator: Readonly<Privilege> = Object.freeze({
+    FREE: 'free',
+});
+

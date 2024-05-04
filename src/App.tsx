@@ -1,12 +1,17 @@
-import { PRIVILEGES } from './constants/privileges'
+import { PRIVILEGES, moderator } from './constants/privileges'
 import './App.css'
-import { PrivilegesContainer } from './components/container/privileges'
+import { PrivilegesContainer } from './components/privileges/container'
 
 function App() {
   return (
     <>
-      <PrivilegesContainer userPrivileges={[PRIVILEGES.PAID]} componentPrivileges={PRIVILEGES.PAID} active_tooltip>
-        TEST
+      <PrivilegesContainer
+        moderator={Object.values(moderator)}
+        userPrivileges={[PRIVILEGES.FREE]}
+        componentPrivileges={PRIVILEGES.ADMIN}
+        active_tooltip
+      >
+        TEST PRIVILEGES
       </PrivilegesContainer>
     </>
   )

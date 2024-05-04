@@ -13,9 +13,10 @@ export function PrivilegesContainer(props: {
     active_not_privileges?: boolean;
     not_privileges_container?: React.ReactNode;
     children?: React.ReactNode;
+    moderator: string[];
 }) {
 
-    if (PrivilegesController(props.componentPrivileges, props.userPrivileges)) {
+    if (PrivilegesController(props.componentPrivileges, props.userPrivileges, props.moderator)) {
         return props.children;
     }
 

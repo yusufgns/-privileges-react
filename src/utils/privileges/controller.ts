@@ -1,16 +1,17 @@
-import { UNLIMITED_PRIVILEGES } from "../../constants/privileges"
-
-export const hasUnlimitedPrivileges = (privileges: string[]) => {
-    return Object.values(UNLIMITED_PRIVILEGES).reduce((acc, privilege) => {
-        return acc || privileges.includes(privilege);
-    }, false);
-};
-
-export const PrivilegesController = (componentPrivileges: string | undefined, userPrivileges: string[] | undefined) => {
+export const PrivilegesController = (componentPrivileges: string | undefined, userPrivileges: string[] | undefined, moderator: string[]) => {
     if (componentPrivileges !== null && componentPrivileges !== undefined && userPrivileges !== null && userPrivileges !== undefined && userPrivileges?.length > 0) {
-        const isHavePrivileges = userPrivileges.includes(componentPrivileges);
-        const isHaveAdmin = hasUnlimitedPrivileges(userPrivileges);
+        const hasUserPrivileges = userPrivileges.includes(componentPrivileges);
+        const hasModerator = moderator.reduce((acc, privileges) => {
+            if (userPrivileges) {
+              acc = userPrivileges.includes(privileges);
+            }
+            return acc;
+        }, false);
 
-        return isHavePrivileges || isHaveAdmin;
+        if(hasModerator) {
+            return true;
+        }
+
+        return hasUserPrivileges || hasModerator;
     }
 };
